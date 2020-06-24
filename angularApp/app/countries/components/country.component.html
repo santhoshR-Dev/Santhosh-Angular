@@ -1,0 +1,45 @@
+﻿<div class="container-fluid">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-6">
+                <label for="sel1">Please Select Region:</label>
+                <select (change)="getCountries($event)" class="form-control" id="region">
+                    <option value="">Select Region</option>
+                    <option *ngFor="let region of regionList" value={{region.name}}>{{region.name}}</option>
+                    <!-- <option value="europe"> Europe</option> -->
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="sel1">Please Select Country:</label>
+                <select (change)="getCountryRecords($event)" class="form-control" id="Countries">
+                    <option value="">Select Countries</option>
+                    <option *ngFor="let countr of countryList?.countries" value={{countr.name}}>{{countr.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="country">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Capital</th>
+                        <th>Population</th>
+                        <th>Currencies</th>
+                        <th>Flag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-table-country">{{country.name}}</td>
+                        <td>{{country.capital}}</td>
+                        <td class="td-table-country">{{country.population}}</td>
+                        <td>{{country?.currencies[0]?.code}}</td>
+                        <td><img width="100" [src]="country.flag"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
